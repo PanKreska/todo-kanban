@@ -1,16 +1,19 @@
 import Column from "./components/Column";
+import { TaskProvider } from "./context/TaskContext";
 
 function App() {
   return (
-    <div className="app">
-      <h1>Kanban Board</h1>
+    <TaskProvider>
+      <div className="app">
+        <h1>Kanban Board</h1>
 
-      <div className="board">
-        <Column title="Do zrobienia" />
-        <Column title="W trakcie" />
-        <Column title="Zrobione" />
+        <div className="board">
+          <Column title="Do zrobienia" status="todo" />
+          <Column title="W trakcie" status="doing" />
+          <Column title="Zrobione" status="done" />
+        </div>
       </div>
-    </div>
+    </TaskProvider>
   );
 }
 

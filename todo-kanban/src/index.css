@@ -34,3 +34,10 @@ body {
 .column-content {
   min-height: 300px;
 }
+
+.task {
+  background: #334155;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
