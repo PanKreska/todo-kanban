@@ -123,3 +123,8 @@ form input {
   color: white;
   font-size: 16px;
 }
+
+.add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
