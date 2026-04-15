@@ -7,7 +7,7 @@ export function TaskProvider({ children }) {
         const saved = localStorage.getItem("tasks");
         return saved ? JSON.parse(saved) : [];
     });
-    
+
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }, [tasks]);
@@ -29,8 +29,12 @@ export function TaskProvider({ children }) {
         );
     };
 
+    const deleteTask = (id) => {
+        setTasks((prev) => prev.filter((task) => task.id !== id));
+    };
+
     return (
-        <TaskContext.Provider value={{ tasks, addTask, moveTask }}>
+        <TaskContext.Provider value={{ tasks, addTask, moveTask, deleteTask }}>
             {children}
         </TaskContext.Provider>
     );
