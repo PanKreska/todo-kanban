@@ -77,3 +77,49 @@ form input {
     color: #e2abab;
     font-size: 16px;
 }
+
+.edit-box {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.edit-box input {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+}
+
+.save-btn {
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.add-task {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+}
+
+.add-btn {
+  background: #22c55e;
+  border: none;
+  border-radius: 10px;
+  padding: 0 14px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}

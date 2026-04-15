@@ -7,20 +7,24 @@ export default function AddTask() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text) return;
+    if (!text.trim()) return;
 
     addTask(text);
     setText("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="add-task">
       <input
         type="text"
-        placeholder="Dodaj nowe zadanie i naciśnij Enter..."
+        placeholder="Dodaj nowe zadanie..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
+
+      <button type="submit" className="add-btn">
+        ✔
+      </button>
     </form>
   );
 }

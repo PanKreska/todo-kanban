@@ -33,8 +33,16 @@ export function TaskProvider({ children }) {
         setTasks((prev) => prev.filter((task) => task.id !== id));
     };
 
+    const updateTask = (id, newText) => {
+        setTasks((prev) =>
+            prev.map((task) =>
+                task.id === id ? { ...task, text: newText } : task,
+            ),
+        );
+    };
+
     return (
-        <TaskContext.Provider value={{ tasks, addTask, moveTask, deleteTask }}>
+        <TaskContext.Provider value={{ tasks, addTask, moveTask, deleteTask, updateTask }}>
             {children}
         </TaskContext.Provider>
     );
