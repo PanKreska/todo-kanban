@@ -1,27 +1,41 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const TaskContext = createContext();
 
 export function TaskProvider({ children }) {
-  const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(() => {
+        const saved = localStorage.getItem("tasks");
+        return saved ? JSON.parse(saved) : [];
+    });
+    
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+    const addTask = (text) => {
+        const newTask = {
+            id: Date.now(),
+            text,
+            status: "todo", // todo | doing | done
+        };
 
-  const addTask = (text) => {
-    const newTask = {
-      id: Date.now(),
-      text,
-      status: "todo", // todo | doing | done
+        setTasks((prev) => [...prev, newTask]);
     };
 
-    setTasks((prev) => [...prev, newTask]);
-  };
+    const moveTask = (id, newStatus) => {
+        setTasks((prev) =>
+            prev.map((task) =>
+                task.id === id ? { ...task, status: newStatus } : task,
+            ),
+        );
+    };
 
-  return (
-    <TaskContext.Provider value={{ tasks, addTask }}>
-      {children}
-    </TaskContext.Provider>
-  );
+    return (
+        <TaskContext.Provider value={{ tasks, addTask, moveTask }}>
+            {children}
+        </TaskContext.Provider>
+    );
 }
 
 export function useTasks() {
-  return useContext(TaskContext);
+    return useContext(TaskContext);
 }

@@ -17,7 +17,7 @@ export default function AddTask() {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Nowe zadanie..."
+        placeholder="Dodaj nowe zadanie i naciśnij Enter..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
